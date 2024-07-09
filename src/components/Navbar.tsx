@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 export default function Navbar() {
   return (
 
-  <div className="flex w-screen items-center justify-between h-24 text-white bg-gray-700">
+  <header className="flex w-screen items-center justify-between h-24 text-white bg-gray-700">
     <div className="flex gap-4 ml-12">
       <h2>
         <a href="/">Logo</a>
@@ -26,7 +26,7 @@ export default function Navbar() {
         Get Started for Free
       </Button>
     </div>
-  </div>
+  </header>
   )
   
 }
