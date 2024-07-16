@@ -12,7 +12,7 @@ export default function Navbar() {
         <a href="/dashboard">Dashboard</a>
       </h2>
       <h2>
-        Pricing
+        <a href="/pricing">Pricing</a>
       </h2>
     </div>
     <div className="flex items-center gap-4 mr-12">
