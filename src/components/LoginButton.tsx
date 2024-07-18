@@ -1,12 +1,12 @@
-// src/app/components/LoginButton.jsx
 "use client";
 
+import { signIn } from "next-auth/react";
 import { Button } from "./ui/button";
 
-export default function LoginButton() {
+export default function LoginButton({ text }: any) {
   const handleLogin = () => {
-    // handle login
+    signIn();
   };
 
-  return <Button onClick={handleLogin}>Login with Google</Button>;
+  return <Button onClick={handleLogin}>{text}</Button>;
 }
