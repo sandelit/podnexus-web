@@ -1,6 +1,7 @@
 import type { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
+import jwt from "jsonwebtoken";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -36,4 +37,18 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      // next-auth token object that needs to be encoded into a JWT
+      const accessToken = jwt.sign(token, process.env.JWT_SECRET, {
+        algorithm: "HS256",
+      });
+
+      return { ...token, ...user, accessToken };
+    },
+    async session({ session, token }) {
+      session.user = token;
+      return session;
+    },
+  },
 };
