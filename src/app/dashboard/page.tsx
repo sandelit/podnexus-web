@@ -1,9 +1,11 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useSession } from "next-auth/react";
 import { useState } from "react";
 
 export default function Dashboard() {
+  const session = useSession();
   const [file, setFile] = useState(null);
 
   const handleFileChange = (event) => {
@@ -18,10 +20,9 @@ export default function Dashboard() {
 
     const formData = new FormData();
     formData.append("file", file);
-
     try {
-      const response = await fetch("/api/transcribe", {
-        method: "POST",
+      const response = await fetch("/api/users", {
+        headers: { Authorization: `Bearer ${session.data?.user.accessToken}` },
       });
 
       if (!response.ok) {

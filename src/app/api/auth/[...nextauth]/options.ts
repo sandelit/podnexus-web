@@ -44,7 +44,12 @@ export const authOptions: NextAuthOptions = {
         algorithm: "HS256",
       });
 
-      return { ...token, ...user, accessToken };
+      if (user) {
+        token.name = user.name;
+        token.email = user.email;
+      }
+
+      return { ...token, accessToken };
     },
     async session({ session, token }) {
       session.user = token;
