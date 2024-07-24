@@ -1,3 +1,8 @@
+const Dashboard = () => {
+  return <div>dashie</div>;
+};
+export default Dashboard;
+/*
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -49,3 +54,4 @@ export default function Dashboard() {
     </section>
   );
 }
+*/
