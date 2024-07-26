@@ -1,5 +1,5 @@
 const Dashboard = () => {
-  return <div>dashie</div>;
+  return <div className="w-1/2 h-96 border-2 border-black">dashie</div>;
 };
 export default Dashboard;
 /*
