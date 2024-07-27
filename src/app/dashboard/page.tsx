@@ -1,5 +1,13 @@
+import { Button } from "@/components/ui/button";
+
 const Dashboard = () => {
-  return <div className="w-1/2 h-96 border-2 border-black">dashie</div>;
+  return (
+    <div className="w-screen h-[1100px] flex justify-center items-center">
+      <div className="w-[1000px] h-[600px] p-[50px] border-2 rounded-xl border-black dark:border-white flex justify-center items-end">
+        <Button>Trancsribe</Button>
+      </div>
+    </div>
+  );
 };
 export default Dashboard;
 /*

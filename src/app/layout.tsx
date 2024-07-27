@@ -18,7 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className=" bg-gradient-to-bl from-slate-200 to-gray-100 dark:from-slate-900 dark:to-gray-700">
+      <body
+        className={`${inter.className} h-screen bg-gradient-to-bl from-slate-200 to-gray-100 dark:from-slate-900 dark:to-gray-700`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -26,7 +28,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <main className="flex min-h-screen flex-col items-center ">
+          <main className="flex flex-col items-center ">
             {children}
           </main>
         </ThemeProvider>

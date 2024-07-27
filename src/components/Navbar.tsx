@@ -14,13 +14,18 @@ import {
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import Logo from "./Logo";
 import { ThemeToggle } from "./theme-toggle";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-export default async function Navbar() {
+export default function Navbar() {
+  const isLoggedIn = false;
   return (
     // <header className="flex w-screent tems-center justify-between h-24 text-white bg-gray-700">
     <header className="flex w-screen items-center justify-between h-24">
       <div className="flex gap-4 ml-12 items-center">
-        <Logo />
+        <a href="/" className="flex gap-2 items-center">
+          <Logo />
+          <p className="text-3xl">PodNexus</p>
+        </a>
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
@@ -60,14 +65,27 @@ export default async function Navbar() {
           </NavigationMenuList>
         </NavigationMenu>
       </div>
-      <div className="flex items-center gap-4 mr-12">
-        <h2>Schedule a Demo</h2>
-        <div className="flex gap-2">
-          <Button variant={"secondary"}>Log in</Button>
-          <Button>Get started</Button>
-          <ThemeToggle />
-        </div>
-      </div>
+      {isLoggedIn
+        ? (
+          <div className="flex items-center gap-4 mr-12">
+            <h2>Schedule a Demo</h2>
+            <div className="flex gap-2">
+              <Button variant={"secondary"}>Log in</Button>
+              <Button>Get started</Button>
+              <ThemeToggle />
+            </div>
+          </div>
+        )
+        : (
+          <div className="flex items-center gap-4 mr-12">
+            <div className="flex gap-2">
+              <Avatar>
+                <AvatarFallback>TS</AvatarFallback>
+              </Avatar>
+              <ThemeToggle />
+            </div>
+          </div>
+        )}
     </header>
   );
 }
