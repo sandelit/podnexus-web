@@ -1,65 +1,72 @@
+import FileCard from "@/components/file-card";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
+import { File } from "@/models/file";
 
 const Dashboard = () => {
+  const files: File[] = [
+    {
+      id: "123",
+      name: "jfk.wav",
+      length: "00:11",
+      date: "07/27/2014",
+    },
+    {
+      id: "124",
+      name: "test.mp3",
+      length: "01:38",
+      date: "07/03/2018",
+    },
+  ];
+
   return (
-    <div className="w-screen h-[1100px] flex justify-center items-center">
-      <div className="w-[1000px] h-[600px] p-[50px] border-2 rounded-xl border-black dark:border-white flex justify-center items-end">
-        <Button>Trancsribe</Button>
+    <>
+      <Separator />
+      <div className="w-screen h-full flex justify-center ">
+        <Separator orientation="vertical" />
+        <ul>
+          {files?.map((file: File) => (
+            <li key={file.id}>
+              <FileCard {...file} />
+            </li>
+          ))}
+        </ul>
+        <Separator orientation="vertical" />
+        <div className="w-[1000px] p-[50px] rounded-xl border-black dark:border-white flex justify-center">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button>
+                {files?.length ? "Trancsribe" : "Transcribe your first file"}
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle>Transcribe Files</DialogTitle>
+                <DialogDescription>
+                </DialogDescription>
+              </DialogHeader>
+              <div className="grid gap-4 py-4">
+                <Input type="file" />
+              </div>
+              <DialogFooter>
+                <Button type="submit">Transcribe</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 export default Dashboard;
-/*
-"use client";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { useSession } from "next-auth/react";
-import { useState } from "react";
-
-export default function Dashboard() {
-  const session = useSession();
-  const [file, setFile] = useState(null);
-
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
-  };
-
-  const transcribe = async () => {
-    if (!file) {
-      alert("Please select a file first.");
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append("file", file);
-    try {
-      const response = await fetch("/api/users", {
-        headers: { Authorization: `Bearer ${session.data?.user.accessToken}` },
-      });
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const data = await response.json();
-      console.log("Transcription result:", data);
-      // Handle transcription result here
-    } catch (error) {
-      console.error("Error during transcription:", error);
-    }
-  };
-
-  return (
-    <section className="w-screen h-screen flex justify-center items-center">
-      <div className="w-1/2 h-1/2 border-2 border-black flex flex-col justify-center items-center gap-6
-        ">
-        <h1 className="text-3xl bold underline">dashboard</h1>
-
-        <Input type="file" className="w-64" onChange={handleFileChange} />
-        <Button onClick={transcribe}>Trancsribe</Button>
-      </div>
-    </section>
-  );
-}
-*/
