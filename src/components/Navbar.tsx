@@ -19,7 +19,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 export default function Navbar() {
   const isLoggedIn = false;
   return (
-    // <header className="flex w-screent tems-center justify-between h-24 text-white bg-gray-700">
     <header className="flex w-screen items-center justify-between h-24">
       <div className="flex gap-4 ml-12 items-center">
         <a href="/" className="flex gap-2 items-center">
@@ -29,7 +28,7 @@ export default function Navbar() {
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
-              <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
+              <NavigationMenuTrigger>Dropdown</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <NavigationMenuLink>Link</NavigationMenuLink>
                 <NavigationMenuLink asChild>

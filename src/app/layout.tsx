@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body
-        className={`${inter.className} h-screen`}
+        className={`${inter.className} h-screen flex flex-col`}
       >
         <ThemeProvider
           attribute="class"
@@ -29,7 +29,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <main className="h-full flex flex-col items-center ">
+          <main className="flex-1 ">
             {children}
           </main>
         </ThemeProvider>

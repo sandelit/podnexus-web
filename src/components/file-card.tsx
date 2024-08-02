@@ -4,7 +4,7 @@ import { RxCalendar, RxStopwatch } from "react-icons/rx";
 
 const FileCard = ({ name, length, date }: File) => {
   return (
-    <div className="w-64 m-4">
+    <div>
       <Card>
         <CardHeader>
           <CardTitle>{name}</CardTitle>
